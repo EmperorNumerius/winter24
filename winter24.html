@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Winter Traditions Around the World by Numerius</title>
+  <style>
+    /* General Styles */
+    body {
+      font-family: 'Arial', sans-serif;
+      background: linear-gradient(to bottom, #1e3c72, #2a5298);
+      color: #fff;
+      margin: 0;
+      overflow: hidden;
+    }
+
+    header {
+      text-align: center;
+      padding: 2rem 1rem;
+      background-color: rgba(30, 60, 114, 0.9);
+      box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.5);
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+    }
+
+    header h1 {
+      margin: 0;
+      font-size: 3rem;
+      text-shadow: 3px 3px 6px rgba(0, 0, 0, 0.7);
+    }
+
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 2rem 1rem;
+    }
+
+    .tradition-card {
+      background: rgba(255, 255, 255, 0.1);
+      border-radius: 15px;
+      padding: 1.5rem;
+      margin: 1rem 0;
+      border: 2px solid #fff;
+      transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+    }
+
+    .tradition-card:hover {
+      transform: translateY(-10px);
+      box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.5);
+    }
+
+    .tradition-card h2 {
+      margin: 0 0 1rem 0;
+      font-size: 2rem;
+      color: #ffeb3b;
+      text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+    }
+
+    .tradition-card p {
+      margin: 0.5rem 0;
+      line-height: 1.6;
+      color: #fff;
+    }
+
+    button {
+      background-color: #ff5722;
+      color: #fff;
+      border: none;
+      border-radius: 5px;
+      padding: 0.7rem 1.5rem;
+      font-size: 1rem;
+      cursor: pointer;
+      transition: background-color 0.3s, transform 0.3s;
+    }
+
+    button:hover {
+      background-color: #e64a19;
+      transform: scale(1.05);
+    }
+
+    footer {
+      text-align: center;
+      padding: 1rem;
+      background-color: rgba(30, 60, 114, 0.9);
+      position: relative;
+      bottom: 0;
+      color: #fff;
+    }
+
+    footer p {
+      margin: 0;
+    }
+
+    /* Falling snow styles */
+    .snow {
+      position: absolute;
+      background-color: white;
+      border-radius: 50%;
+      animation: fall linear infinite;
+    }
+
+    @keyframes fall {
+      from {
+        transform: translateY(-100vh);
+      }
+      to {
+        transform: translateY(100vh);
+      }
+    }
+
+    /* Origami Christmas tree and presents */
+    .tree {
+      position: absolute;
+      bottom: 0;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 0;
+      height: 0;
+      border-left: 50px solid transparent;
+      border-right: 50px solid transparent;
+      border-bottom: 100px solid #2a5298;
+    }
+
+    .present {
+      position: absolute;
+      bottom: 0;
+      width: 50px;
+      height: 50px;
+      background-color: #ffeb3b;
+      border: 2px solid #fff;
+      box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.5);
+    }
+
+    .present:nth-child(1) {
+      left: 40%;
+    }
+
+    .present:nth-child(2) {
+      left: 60%;
+    }
+
+    /* Restart button */
+    .restart-button {
+      position: fixed;
+      bottom: 2rem;
+      right: 2rem;
+      background-color: #d32f2f;
+      color: white;
+      padding: 0.7rem 1.5rem;
+      border: none;
+      border-radius: 5px;
+      font-size: 1rem;
+      cursor: pointer;
+      transition: background-color 0.3s, transform 0.3s;
+    }
+
+    .restart-button:hover {
+      background-color: #b71c1c;
+      transform: scale(1.05);
+    }
+  </style>
+</head>
+<body>
+<header>
+  <h1>Winter Traditions Around the World</h1>
+</header>
+<div class="container" id="traditions-container">
+  <!-- Dynamic traditions will appear here -->
+</div>
+<div style="text-align: center; margin-bottom: 2rem;">
+  <button onclick="addRandomTradition()">Get Another Tradition</button>
+</div>
+<button class="restart-button" onclick="restartSnow()">Restart Snow</button>
+<div class="tree"></div>
+<div class="present"></div>
+<div class="present"></div>
+<footer>
+  <p>&copy; Made by Numerius</p>
+</footer>
+
+<script>
+  const traditions = [
+    {
+      title: "Krampusnacht - Austria",
+      description: "On December 5th, Austrians celebrate Krampusnacht. The tradition revolves around Krampus, a frightening half-goat, half-demon figure who punishes naughty children by roaming the streets, rattling chains, and scaring those who misbehaved throughout the year. The festival is a dramatic and unique way to mark the holiday season, blending frightful fun with folklore."
+    },
+    {
+      title: "Sinterklaas - The Netherlands",
+      description: "In the Netherlands, children eagerly await the arrival of Sinterklaas. This holiday tradition begins in mid-November when Sinterklaas arrives by boat, accompanied by his helpers. The event is marked by parades, songs, and excitement, culminating on December 5th with the exchange of sweets, small gifts, and rhyming poems."
+    },
+    {
+      title: "Yule Goat - Sweden",
+      description: "The Yule Goat has been a significant symbol of Swedish Christmas traditions for centuries. Representing the spirit of the holiday, towns often display massive straw goats in public squares. One of the most famous examples is the Gävle Goat, which has become a beloved yet controversial centerpiece due to its frequent destruction by vandals."
+    },
+    {
+      title: "Dongzhi Festival - China",
+      description: "Celebrated on the winter solstice, the Dongzhi Festival is a time for family reunions and shared meals. A traditional food for the festival is tangyuan, sweet glutinous rice balls served in broth. These symbolize family unity and prosperity, offering warmth and comfort during the coldest season."
+    },
+    {
+      title: "Bonenkai Parties - Japan",
+      description: "Bonenkai, or 'forget-the-year' parties, are a unique Japanese tradition held in December. These parties are organized by friends, families, and workplaces to reflect on the year gone by, bid farewell to its troubles, and embrace a fresh start. Food, drinks, and camaraderie define this cherished custom."
+    },
+    {
+      title: "Carols by Candlelight - Australia",
+      description: "Carols by Candlelight is an iconic Australian tradition where people gather in parks and public spaces to sing Christmas carols. Held during the southern hemisphere's summer, this event is accompanied by the glow of candles, fostering a magical and festive atmosphere."
+    },
+    {
+      title: "Saami Reindeer Herding - Finland",
+      description: "In the arctic regions of Finland, the indigenous Saami people continue the ancient tradition of reindeer herding. This essential livelihood is celebrated in winter festivals where reindeer races, traditional clothing, and storytelling come alive, offering a glimpse into their unique culture and snowy surroundings."
+    },
+    {
+      title: "St. Lucia's Day - Sweden",
+      description: "Celebrated on December 13th, St. Lucia's Day marks the beginning of the Christmas season in Sweden. Young girls dress in white gowns with red sashes and wear crowns of candles, symbolizing light during the darkest time of the year. This serene and beautiful tradition includes singing, processions, and festive treats."
+    },
+    {
+      title: "Chichibu Night Festival - Japan",
+      description: "Held in early December, the Chichibu Night Festival in Japan features elaborate floats illuminated with lanterns and a spectacular fireworks display. This festival celebrates the deities of the Chichibu Shrine and brings warmth and light to cold winter nights, blending cultural heritage with festive cheer."
+    },
+    {
+      title: "Koli Christmas Markets - Finland",
+      description: "Nestled in the snow-covered hills of Finland, the Koli Christmas Markets provide a cozy and magical experience. Visitors enjoy handcrafted gifts, traditional Finnish foods like glögi (mulled wine), and gingerbread cookies while surrounded by pristine winter landscapes."
+    }
+  ];
+
+  function addRandomTradition() {
+    const randomTradition = traditions[Math.floor(Math.random() * traditions.length)];
+
+    const card = document.createElement('div');
+    card.classList.add('tradition-card');
+
+    const title = document.createElement('h2');
+    title.textContent = randomTradition.title;
+
+    const description = document.createElement('p');
+    description.textContent = randomTradition.description;
+
+    card.appendChild(title);
+    card.appendChild(description);
+
+    const container = document.getElementById('traditions-container');
+    container.insertBefore(card, container.firstChild);
+  }
+
+  function createSnowflake() {
+    const snowflake = document.createElement('div');
+    const size = Math.random() * 8 + 2; // Snowflake size between 2px and 10px
+
+    snowflake.classList.add('snow');
+    snowflake.style.width = `${size}px`;
+    snowflake.style.height = `${size}px`;
+    snowflake.style.left = `${Math.random() * 100}vw`;
+    snowflake.style.animationDuration = `${Math.random() * 5 + 5}s`; // Duration between 5-10 seconds
+    snowflake.style.animationTimingFunction = Math.random() < 0.5 ? 'linear' : 'ease-in';
+
+    document.body.appendChild(snowflake);
+  }
+
+  function generateSnow() {
+    setInterval(createSnowflake, 200);
+  }
+
+  function restartSnow() {
+    generateSnow();
+  }
+
+  window.onload = () => {
+    generateSnow();
+  };
+</script>
+</body>
+</html>
